@@ -1,0 +1,13 @@
+extraLargeArray(100000) results: insert: 699.640292 ms | append: 5.160666 ms
+
+largeArray(10000) results: insert: 6.933833 ms | append: 494.417 microseconds
+
+mediumArray(1000) results:  insert: 125.5 microseconds | append: 78.875 microseconds
+
+smallArray(100) results: insert: 21 microseconds| append: 42.083 microseconds
+
+tinyArray(10) results: insert: 12.541 microseconds | append: 88.666 microseconds
+
+The insert function is quicker with smaller arrays, but as soon as the array starts getting bigger, the append function works much more quickly. The append function scales much better, because even though it is slower with smaller arrays, it is still extremely fast. The difference between the two functions is not noticable with smaller arrays but is becomes more and more apparent the larger the array. This is shown by the results of the tests with the append function being hundreds of milliseconds faster with an array size of 100000.
+
+EC: The reason the unshift is slower is because it is not just inserting a new element into the array. It is inserting a new element AND having to move all of the existing elements back one. A simple way of explaining it is push puts the element at the back, meaning it only has to touch one thing. Unshift has to touch the element and all of the other elements to move them back one.
